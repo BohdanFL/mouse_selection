@@ -100,6 +100,7 @@ const detectCollide = (el1, el2, direction = 0, e) => {
 };
 
 const selecting = (e) => {
+  e = e.changedTouches[0] || e
 	select.left = select.offsetLeft
 	select.top = select.offsetTop
 	const direction = getDirection(e)
@@ -114,6 +115,7 @@ const selecting = (e) => {
 			target.style.backgroundColor = "#0f6f80"
 		}
 	})
+	/*
 	mousePos.innerHTML = `
 	    <h3>Mouse</h3>
 	    left:_ ${e.pageX}
@@ -130,14 +132,19 @@ const selecting = (e) => {
 	    <br>
 	    bottom:_ ${select.bottom}
 	  `
+	  */
 };
 
 
 
 const startSelect = (e) => {
+  e = e.changedTouches[0] || e
+  
 	select.style.left = e.pageX + "px";
 	select.style.top = e.pageY + "px";
+	
 	window.addEventListener("mousemove", selecting);
+	window.addEventListener("touchmove", selecting)
 };
 
 const endSelect = () => {
@@ -146,6 +153,7 @@ const endSelect = () => {
 		target.style.backgroundColor = "#f0a08f"
 	})
 	window.removeEventListener("mousemove", selecting);
+	window.removeEventListener("touchmove", selecting)
 };
 
 
@@ -153,4 +161,5 @@ const endSelect = () => {
 // window.addEventListener("resize", initTargetPos)
 window.addEventListener("mousedown", startSelect);
 window.addEventListener("mouseup", endSelect);
-
+window.addEventListener('touchstart', startSelect)
+window.addEventListener('touchend', endSelect)
