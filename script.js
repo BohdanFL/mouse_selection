@@ -100,7 +100,9 @@ const detectCollide = (el1, el2, direction = 0, e) => {
 };
 
 const selecting = (e) => {
-  e = e.changedTouches[0] || e
+  	if (e.changedTouches !== undefined) {
+   		e = e.changedTouches[0];
+  	}
 	select.left = select.offsetLeft
 	select.top = select.offsetTop
 	const direction = getDirection(e)
@@ -138,7 +140,9 @@ const selecting = (e) => {
 
 
 const startSelect = (e) => {
-  e = e.changedTouches[0] || e
+  	if (e.changedTouches !== undefined) {
+   		e = e.changedTouches[0];
+  	}
   
 	select.style.left = e.pageX + "px";
 	select.style.top = e.pageY + "px";
