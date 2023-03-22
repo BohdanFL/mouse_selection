@@ -1,21 +1,8 @@
 const select = document.getElementById("select");
 const targets = document.querySelectorAll(".target");
 const selectPos = document.querySelector(".for-select")
-const targetPos = document.querySelector(".for-target")
 const mousePos = document.querySelector(".for-mouse")
 
-// const initTargetPos = () => {
-// 	targetPos.innerHTML = `
-// 		<h3>Target</h3>
-// 		left:___ ${target.offsetLeft}
-// 		<br>
-// 		right:__ ${target.offsetLeft + target.offsetWidth}
-// 		<br>
-// 		top:____ ${target.offsetTop}
-// 		<br>
-// 		bottom:_ ${target.offsetTop + target.offsetHeight}
-//   `
-// }
 
 const getDirection = (e) => {
 	if (e.pageX < select.offsetLeft && e.pageY < select.offsetTop) {
@@ -117,7 +104,7 @@ const selecting = (e) => {
 			target.style.backgroundColor = "#0f6f80"
 		}
 	})
-	/*
+	
 	mousePos.innerHTML = `
 	    <h3>Mouse</h3>
 	    left:_ ${e.pageX}
@@ -134,7 +121,7 @@ const selecting = (e) => {
 	    <br>
 	    bottom:_ ${select.bottom}
 	  `
-	  */
+	  
 };
 
 
@@ -161,8 +148,6 @@ const endSelect = () => {
 };
 
 
-// initTargetPos()
-// window.addEventListener("resize", initTargetPos)
 window.addEventListener("mousedown", startSelect);
 window.addEventListener("mouseup", endSelect);
 window.addEventListener('touchstart', startSelect)
